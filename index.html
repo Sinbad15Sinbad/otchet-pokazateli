@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OTCHET-POKAZATELI</title>
+    <title>OTCHET</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
     <style>
         :root {
@@ -29,7 +29,7 @@
             font-family: 'Roboto', sans-serif;
             background-color: var(--light-bg);
             color: var(--dark-text);
-            line-height: 1.6;
+            line-height: 1.2;
         }
 
         .container {
@@ -49,7 +49,7 @@
 
         header h1 {
             margin: 0;
-            font-size: 1.8rem;
+            font-size: 1.9rem;
         }
 
         nav {
@@ -314,7 +314,8 @@
 
 <body>
     <header>
-        <h1>Система отчетности "OTCHET-POKAZATELI"</h1>
+	<h2 id="reportDateRange">Отчет</h2>
+	<h3>Преподаватель МБУДО «ДХШ» Магнитогорска Костырева Мария Сергеевна</h3>
     </header>
 
     <nav id="mainNav">
@@ -322,7 +323,7 @@
             <li><a href="#" data-section="section1" class="nav-link active">1.1</a></li>
             <li><a href="#" data-section="section2" class="nav-link">1.2</a></li>
             <li><a href="#" data-section="section3" class="nav-link">1.3</a></li>
-            <li><a href="#" data-section="section4" class="nav-link">1.4</a></li>
+            <li><a href="#" data-section="section4" class="nav-link">1.4</a></li>            
             <li><a href="#" data-section="section5" class="nav-link">1.5</a></li>
             <li><a href="#" data-section="section6" class="nav-link">1.6</a></li>
             <li><a href="#" data-section="section7" class="nav-link">1.7</a></li>
@@ -338,39 +339,31 @@
     <div class="container">
         <!-- Раздел 1.1 -->
         <section id="section1" class="content-section active">
-            <h2 class="section-title">1.1 Повышение уровня профессиональной подготовленности и самообразования</h2>
+            <h3 class="section-title">1.1 Повышение уровня профессиональной подготовленности и самообразования</h3>
             <div class="form-container">
-                <div class="form-group">
-                    <label for="section1-input1">Графа 1.1</label>
-                    <input type="text" id="section1-input1" class="form-control" readonly value="1.1">
-                </div>
-                <div class="form-group">
+                	<div class="form-group">
                     <label for="section1-input2">Дата мероприятия</label>
                     <input type="date" id="section1-input2" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="section1-input3">Название мероприятия</label>
-                    <input type="text" id="section1-input3" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="section1-input4">Место проведения</label>
+                    <label for="section1-input4">Название</label>
                     <input type="text" id="section1-input4" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="section1-input5">Ссылка</label>
+                    <label for="section1-input5">Виды работы</label>
                     <input type="url" id="section1-input5" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="section1-input6">Участники</label>
-                    <input type="text" id="section1-input6" class="form-control">
+                    <label for="section1-input6">Ссылка</label>
+                    <input type="url" id="section1-input6" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="section1-input7">Призеры</label>
+                    <label for="section1-input7">Дополнительное поле</label>
                     <input type="text" id="section1-input7" class="form-control">
                 </div>
             </div>
             
-            <p class="help-text">Нажмите на изображение, чтобы увеличить</p>
+          <p class="help-text">Нажми, чтобы увеличить</p>
             
             <div class="preview-container">
                 <img src="1.1 - 1.2.jpg" alt="Пример отчета 1.1" class="preview-image" onclick="openModal(this.src)">
@@ -378,110 +371,404 @@
         </section>
 
         <!-- Раздел 1.2 -->
-        <section id="section2" class="content-section">
-            <h2 class="section-title">1.2 Участие в профессиональных конкурсах</h2>
+        <section id="section2" class="content-section active">
+            <h3 class="section-title">1.2 Эффективное применение цифровых (электронных) средств</h3>
             <div class="form-container">
-                <div class="form-group">
-                    <label for="section2-input1">Графа 1.2</label>
-                    <input type="text" id="section2-input1" class="form-control" readonly value="1.2">
+			<div class="form-group">
+			<label for="section2-input2">Дата мероприятия</label>
+            <input type="date" id="section2-input2" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="section2-input2">Дата конкурса</label>
-                    <input type="date" id="section2-input2" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="section2-input3">Название конкурса</label>
+                    <label for="section2-input3">Название</label>
                     <input type="text" id="section2-input3" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="section2-input4">Организатор</label>
+                    <label for="section2-input4">Виды работы</label>
                     <input type="text" id="section2-input4" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="section2-input5">Ссылка на результаты</label>
+                    <label for="section2-input5">Ссылка</label>
                     <input type="url" id="section2-input5" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="section2-input6">Результат участия</label>
+                    <label for="section2-input6">Дополнительное поле</label>
                     <input type="text" id="section2-input6" class="form-control">
                 </div>
             </div>
             
-            <p class="help-text">Нажмите на изображение, чтобы увеличить</p>
+            <p class="help-text">Нажми, чтобы увеличить</p>
             
             <div class="preview-container">
-                <img src="/Users/Sabir/Library/Mobile Documents/com~apple~CloudDocs/Documents/GAZETA/TG_Parsing/HTML:CSS:JS/project0/1.1 - 1.2.jpg" alt="Пример отчета 1.2" class="preview-image" onclick="openModal(this.src)">
+                <img src="1.1 - 1.2.jpg" alt="Пример отчета 1.2" class="preview-image" onclick="openModal(this.src)">
             </div>
         </section>
 
-        <!-- Остальные разделы аналогично -->
-        <!-- Раздел 1.3 -->
+       <!-- Раздел 1.3 -->
         <section id="section3" class="content-section">
-            <h2 class="section-title">1.3 Публикации в профессиональных изданиях</h2>
+            <h2 class="section-title">1.3 Результативность  участия учащихся в городских, зональных и региональных конкурсов, учредителями которых являются  и региональные и муниципальные учреждения–очные конкурсы или оригиналы работ</h2>
             <div class="form-container">
-                <div class="form-group">
-                    <label for="section3-input1">Графа 1.3</label>
-                    <input type="text" id="section3-input1" class="form-control" readonly value="1.3">
-                </div>
-                <div class="form-group">
-                    <label for="section3-input2">Дата публикации</label>
+                		<div class="form-group">
+                    <label for="section3-input2">Дата мероприятия</label>
                     <input type="date" id="section3-input2" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="section3-input3">Название публикации</label>
+                    <label for="section3-input3">Название конкурса</label>
                     <input type="text" id="section3-input3" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="section3-input4">Издание</label>
+                    <label for="section3-input4">Участники (колличество, фамилии)</label>
                     <input type="text" id="section3-input4" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="section3-input5">Ссылка на публикацию</label>
+                    <label for="section3-input5">Призеры</label>
+                    <input type="url" id="section3-input5" class="form-control">
+                </div>
+								<div class="form-group">
+                    <label for="section3-input5">Ссылка</label>
                     <input type="url" id="section3-input5" class="form-control">
                 </div>
             </div>
-        </section>
 
-        <!-- Разделы с 1.4 по 2.3 будут аналогичными -->
-        <!-- Для примера покажу еще один раздел -->
-        
-        <!-- Раздел 1.4 -->
-        <section id="section4" class="content-section">
-            <h2 class="section-title">1.4 Проведение мастер-классов и открытых уроков</h2>
-            <div class="form-container">
-                <div class="form-group">
-                    <label for="section4-input1">Графа 1.4</label>
-                    <input type="text" id="section4-input1" class="form-control" readonly value="1.4">
-                </div>
-                <div class="form-group">
-                    <label for="section4-input2">Дата проведения</label>
-                    <input type="date" id="section4-input2" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="section4-input3">Тип мероприятия</label>
-                    <input type="text" id="section4-input3" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="section4-input4">Тема</label>
-                    <input type="text" id="section4-input4" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="section4-input5">Место проведения</label>
-                    <input type="text" id="section4-input5" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="section4-input6">Количество участников</label>
-                    <input type="number" id="section4-input6" class="form-control">
-                </div>
+						<p class="help-text">Нажми, чтобы увеличить</p>
+            
+            <div class="preview-container">
+                <img src="1.3 - 1.6.jpg" alt="Пример отчета 1.1" class="preview-image" onclick="openModal(this.src)">
             </div>
         </section>
 
-        <!-- Здесь следуют разделы 1.5 - 2.3 с соответствующими полями -->
-        <!-- Добавьте оставшиеся разделы аналогичным образом -->
-    </div>
+       <!-- Раздел 1.4 -->
+        <section id="section4" class="content-section">
+            <h2 class="section-title">1.4 Результативность  участия  учащихся в областных, всероссийских и международных конкурсов,  учредителями которых являются федеральные, региональные, областные и муниципальные учреждения – очные конкурсы или оригиналы работ</h2>
+            <div class="form-container">
+                <div class="form-group">
+                    <label for="section4-input2">Дата мероприятия</label>
+                    <input type="date" id="section4-input2" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="section4-input3">Название конкурса</label>
+                    <input type="text" id="section4-input3" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="section4-input4">Участники (колличество, фамилии)</label>
+                    <input type="text" id="section4-input4" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="section4-input5">Призеры</label>
+                    <input type="text" id="section4-input5" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="section4-input6">Ссылка</label>
+                    <input type="url" id="section4-input6" class="form-control">
+                </div>
+            </div>
+						
+						<p class="help-text">Нажми, чтобы увеличить</p>
+            
+            <div class="preview-container">
+                <img src="1.3 - 1.6.jpg" alt="Пример отчета 1.1" class="preview-image" onclick="openModal(this.src)">
+            </div>
 
-    <div class="action-buttons">
-        <button class="btn btn-danger" id="clearButton">Очистить все поля</button>
+        </section>
+
+				<!-- Раздел 1.5 -->
+         <section id="section5" class="content-section">
+					<h2 class="section-title">1.5 Работа с одарёнными детьми - Творческая смена Образовательного центра «Сириус», Сочи - Городской фестиваль-конкурс «Магнитка. Новые имена» - Организация участия во Всероссийских и Международных детских выездных пленэрах и искусствоведческих практиках («Союз педагогов-художников», Межрегиональная молодежная общественная организация «Дом мира»)</h2>
+					<div class="form-container">
+							<div class="form-group">
+									<label for="section5-input2">Дата мероприятия</label>
+									<input type="date" id="section5-input2" class="form-control">
+							</div>
+							<div class="form-group">
+									<label for="section5-input3">Название конкурса</label>
+									<input type="text" id="section5-input3" class="form-control">
+							</div>
+							<div class="form-group">
+									<label for="section5-input4">Участники (колличество, фамилии)</label>
+									<input type="text" id="section4-input4" class="form-control">
+							</div>
+							<div class="form-group">
+									<label for="section5-input5">Призеры</label>
+									<input type="text" id="section4-input5" class="form-control">
+							</div>
+							<div class="form-group">
+									<label for="section5-input6">Ссылка</label>
+									<input type="url" id="section4-input6" class="form-control">
+							</div>
+					</div>
+
+					<p class="help-text">Нажми, чтобы увеличить</p>
+            
+            <div class="preview-container">
+                <img src="1.3 - 1.6.jpg" alt="Пример отчета 1.1" class="preview-image" onclick="openModal(this.src)">
+            </div>
+			</section>
+
+			<!-- Раздел 1.6 -->
+			<section id="section6" class="content-section">
+				<h2 class="section-title">1.6 Победители в онлайн конкурсах</h2>
+				<div class="form-container">
+						<div class="form-group">
+								<label for="section6-input2">Дата мероприятия</label>
+								<input type="date" id="section5-input2" class="form-control">
+						</div>
+						<div class="form-group">
+								<label for="section6-input3">Название конкурса</label>
+								<input type="text" id="section5-input3" class="form-control">
+						</div>
+						<div class="form-group">
+								<label for="section6-input4">Участники (колличество, фамилии)</label>
+								<input type="text" id="section4-input4" class="form-control">
+						</div>
+						<div class="form-group">
+								<label for="section6-input5">Призеры</label>
+								<input type="text" id="section4-input5" class="form-control">
+						</div>
+						<div class="form-group">
+								<label for="section6-input6">Ссылка</label>
+								<input type="url" id="section4-input6" class="form-control">
+						</div>
+				</div>
+
+				<p class="help-text">Нажми, чтобы увеличить</p>
+					
+					<div class="preview-container">
+							<img src="1.3 - 1.6.jpg" alt="Пример отчета 1.1" class="preview-image" onclick="openModal(this.src)">
+					</div>
+			</section>
+
+			<!-- Раздел 1.7 -->
+			<section id="section7" class="content-section">
+				<h2 class="section-title">1.7 Результативность участия преподавателя в конкурсах, фестивалях, методических или профессиональных конкурсах, выставках</h2>
+				<div class="form-container">
+						<div class="form-group">
+								<label for="section7-input2">Дата мероприятия</label>
+								<input type="date" id="section5-input2" class="form-control">
+						</div>
+						<div class="form-group">
+								<label for="section7-input3">Название конкурса</label>
+								<input type="text" id="section5-input3" class="form-control">
+						</div>
+						<div class="form-group">
+								<label for="section7-input4">Участники (колличество, фамилии)</label>
+								<input type="text" id="section4-input4" class="form-control">
+						</div>
+						<div class="form-group">
+								<label for="section7-input5">Призеры</label>
+								<input type="text" id="section4-input5" class="form-control">
+						</div>
+				<div class="form-group">
+						<label for="section7-input6">Ссылка</label>
+						<input type="url" id="section4-input6" class="form-control">
+				</div>
+			</div>
+
+			<p class="help-text">Нажми, чтобы увеличить</p>
+				
+				<div class="preview-container">
+						<img src="1.7 - 1.10.jpg" alt="Пример отчета 1.1" class="preview-image" onclick="openModal(this.src)">
+				</div>
+	</section>
+
+			<!-- Раздел 1.8 -->
+			<section id="section8" class="content-section">
+					<h2 class="section-title">1.8 Активная выставочная и творческая деятельность учащихся и преподавателя: - персональная выставка учащегося или преподавателя - тематическая выставка учащихся: школьная, городская</h2>
+					<div class="form-container">
+							<div class="form-group">
+							<label for="section8-input2">Дата мероприятия</label>
+							<input type="date" id="section5-input2" class="form-control">
+					</div>
+					<div class="form-group">
+							<label for="section8-input3">Название конкурса</label>
+							<input type="text" id="section5-input3" class="form-control">
+					</div>
+					<div class="form-group">
+							<label for="section8-input4">Участники (колличество, фамилии)</label>
+							<input type="text" id="section4-input4" class="form-control">
+					</div>
+					<div class="form-group">
+							<label for="section8-input5">Призеры</label>
+							<input type="text" id="section4-input5" class="form-control">
+					</div>
+					<div class="form-group">
+							<label for="section8-input6">Ссылка</label>
+							<input type="url" id="section4-input6" class="form-control">
+					</div>
+					</div>
+
+					<p class="help-text">Нажми, чтобы увеличить</p>
+			
+					<div class="preview-container">
+					<img src="1.7 - 1.10.jpg" alt="Пример отчета 1.1" class="preview-image" onclick="openModal(this.src)">
+					</div>
+			</section>
+
+			<!-- Раздел 1.9 -->
+			<section id="section9" class="content-section">
+				<h2 class="section-title">1.9 Организация и проведение учебно-воспитательных мероприятий за рамками расписания: (тематического классного часа, посещение  выставки, концерта и тд)</h2>
+				<div class="form-container">
+						<div class="form-group">
+								<label for="section9-input2">Дата мероприятия</label>
+								<input type="date" id="section5-input2" class="form-control">
+						</div>
+						<div class="form-group">
+								<label for="section9-input3">Название конкурса</label>
+								<input type="text" id="section5-input3" class="form-control">
+						</div>
+						<div class="form-group">
+								<label for="section9-input4">Участники (колличество, фамилии)</label>
+								<input type="text" id="section4-input4" class="form-control">
+						</div>
+						<div class="form-group">
+								<label for="section9-input5">Призеры</label>
+								<input type="text" id="section4-input5" class="form-control">
+						</div>
+						<div class="form-group">
+								<label for="section9-input6">Ссылка</label>
+								<input type="url" id="section4-input6" class="form-control">
+						</div>
+			</div>
+
+			<p class="help-text">Нажми, чтобы увеличить</p>
+				
+				<div class="preview-container">
+						<img src="1.7 - 1.10.jpg" alt="Пример отчета 1.1" class="preview-image" onclick="openModal(this.src)">
+				</div>
+			</section>
+
+			<!-- Раздел 1.10 -->
+			<section id="section10" class="content-section">
+				<h2 class="section-title">1.10 Интенсивность - наличие более 13 человек в 1 группе (не более 4х групп)</h2>
+				<div class="form-container">
+						<div class="form-group">
+								<label for="section10-input3">Неизменные данные</label>
+								<input type="text" id="section10-input1" class="form-control" readonly value="IV-3 – 16 человек">
+						</div>
+
+						<div class="form-group">
+							<label for="section10-input3">Неизменные данные</label>
+							<input type="text" id="section10-input1" class="form-control" readonly value="IV-4 – 15 человек">
+						</div>
+
+						<div class="form-group">
+							<label for="section10-input3">Неизменные данные</label>
+							<input type="text" id="section10-input1" class="form-control" readonly value="V-5 – 15 человек">
+						</div>
+
+						<div class="form-group">
+							<label for="section10-input3">Неизменные данные</label>
+							<input type="text" id="section10-input1" class="form-control" readonly value="V-6 – 15 человек">
+						</div>
+						
+					<p class="help-text">Нажми, чтобы увеличить</p>
+					
+					<div class="preview-container">
+							<img src="1.7 - 1.10.jpg" alt="Пример отчета 1.1" class="preview-image" onclick="openModal(this.src)">
+					</div>
+			</section>
+
+			<!-- Раздел 2.1 -->
+			<section id="section11" class="content-section">
+				<h2 class="section-title">2.1 Высокий уровень организации и проведения профессиональных конкурсов, конференций, семинаров, вступительных экзаменов и др. крупных мероприятий, проводимых учреждением от городского уровня и выше: - работа в составе жюри, экзаменационной комиссии - организатор мероприятия - помощник организатора - публикация работ учащихся и преподавателей - работа со СМИ (периодическая печать, телевидение)</h2>
+				<div class="form-container">
+						<div class="form-group">
+								<label for="section11-input2">Дата мероприятия</label>
+								<input type="date" id="section5-input2" class="form-control">
+						</div>
+						<div class="form-group">
+								<label for="section11-input3">Название мероприятия</label>
+								<input type="text" id="section5-input3" class="form-control">
+						</div>
+						<div class="form-group">
+								<label for="section11-input4">Место проведения</label>
+								<input type="text" id="section4-input4" class="form-control">
+						</div>
+						<div class="form-group">
+								<label for="section11-input5">Ссылка</label>
+								<input type="url" id="section4-input5" class="form-control">
+						</div>
+						<div class="form-group">
+								<label for="section11-input6">Дополнительное поле</label>
+								<input type="text" id="section11-input6" class="form-control">
+						</div>
+			</div>
+
+			<p class="help-text">Нажми, чтобы увеличить</p>
+				
+				<div class="preview-container">
+						<img src="2.1 - 2.3.jpg" alt="Пример отчета 2.1" class="preview-image" onclick="openModal(this.src)">
+				</div>
+			</section>
+
+
+			<!-- Раздел 2.2 -->
+			<section id="section12" class="content-section">
+				<h2 class="section-title">2.2 Наставничество, методическая помощь молодым преподавателям</h2>
+				<div class="form-container">
+						<div class="form-group">
+								<label for="section12-input2">Дата мероприятия</label>
+								<input type="date" id="section12-input2" class="form-control">
+						</div>
+						<div class="form-group">
+								<label for="section12-input3">Название мероприятия</label>
+								<input type="text" id="section5-input3" class="form-control">
+						</div>
+						<div class="form-group">
+								<label for="section12-input4">Место проведения</label>
+								<input type="text" id="section4-input4" class="form-control">
+						</div>
+						<div class="form-group">
+								<label for="section12-input5">Ссылка</label>
+								<input type="url" id="section4-input5" class="form-control">
+						</div>
+						<div class="form-group">
+								<label for="section12-input6">Дополнительное поле</label>
+								<input type="text" id="section12-input6" class="form-control">
+						</div>
+			</div>
+
+			<p class="help-text">Нажми, чтобы увеличить</p>
+				
+				<div class="preview-container">
+						<img src="2.1 - 2.3.jpg" alt="Пример отчета 2.1" class="preview-image" onclick="openModal(this.src)">
+				</div>
+			</section>
+
+			<!-- Раздел 2.3 -->
+			<section id="section13" class="content-section">
+				<h2 class="section-title">2.3 Повышение профессионального мастерства. Прохождение КПК</h2>
+				<div class="form-container">
+						<div class="form-group">
+								<label for="section13-input2">Дата мероприятия</label>
+								<input type="date" id="section13-input2" class="form-control">
+						</div>
+						<div class="form-group">
+								<label for="section13-input3">Название мероприятия</label>
+								<input type="text" id="section5-input3" class="form-control">
+						</div>
+						<div class="form-group">
+								<label for="section13-input4">Место проведения</label>
+								<input type="text" id="section4-input4" class="form-control">
+						</div>
+						<div class="form-group">
+								<label for="section13-input5">Ссылка</label>
+								<input type="url" id="section4-input5" class="form-control">
+						</div>
+						<div class="form-group">
+								<label for="section13-input6">Дополнительное поле</label>
+								<input type="text" id="section12-input6" class="form-control">
+						</div>
+			</div>
+
+			<p class="help-text">Нажми, чтобы увеличить</p>
+				
+				<div class="preview-container">
+						<img src="2.1 - 2.3.jpg" alt="Пример отчета 2.1" class="preview-image" onclick="openModal(this.src)">
+				</div>
+			</section>
+
+
+		<div class="action-buttons">
+        <button class="btn btn-danger" id="clearButton">Очистить форму</button>
         <button class="btn btn-success" id="saveButton">Сохранить отчет</button>
     </div>
 
@@ -492,7 +779,7 @@
     </div>
 
     <!-- Уведомление об успешном сохранении -->
-    <div id="successToast" class="success-toast">Отчет успешно сохранен!</div>
+    <div id="successToast" class="success-toast">Успешно сохранено!</div>
 
     <script>
         // Объект для хранения данных всех разделов
@@ -595,7 +882,7 @@
         }
 
         // Исправленная функция сохранения отчета в CSV
-    function saveReport() {
+    		function saveReport() {
         // Сначала сохраняем данные текущего раздела
         saveCurrentSectionData();
         
@@ -729,6 +1016,33 @@
             // Загрузка данных первого раздела при инициализации
             loadSectionData('section1');
         });
+
+				// Функция форматирования даты в формате "DD месяца"
+				function formatDateWithMonth(date) {
+        const day = date.getDate();
+        
+        // Массив с названиями месяцев в родительном падеже
+        const months = [
+            'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+            'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
+        ];
+        
+        const month = months[date.getMonth()];
+        return `${day} ${month}`;
+    }
+    
+    // Задаем конкретные даты: 10 февраля и 10 марта текущего года
+    const currentYear = new Date().getFullYear();
+    const startDate = new Date(currentYear, 1, 10); // 10 февраля (месяцы начинаются с 0)
+    const endDate = new Date(currentYear, 2, 10);   // 10 марта
+    
+    // Форматируем диапазон дат
+    const dateRangeText = `Отчет ${formatDateWithMonth(startDate)} - ${formatDateWithMonth(endDate)}`;
+    
+    // Обновляем заголовок
+    document.getElementById('reportDateRange').textContent = dateRangeText;
     </script>
+
+		
 </body>
 </html>
