@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTCHET-POKAZATELI</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <style>
+        :root {
+            --primary-color: #6262c3;
+            --primary-hover: #5353bc;
+            --success-color: #088e44;
+            --success-hover: #077a3a;
+            --danger-color: #ff4d4d;
+            --danger-hover: #cc0000;
+            --light-bg: #f4f4f4;
+            --dark-text: #333;
+            --border-color: #ccc;
+            --disabled-bg: #e9e9e9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--primary-color);
+            padding: 10px 0;
+            overflow-x: auto;
+            white-space: nowrap;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav::-webkit-scrollbar {
+            height: 5px;
+        }
+
+        nav::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+        }
+
+        nav ul {
+            padding: 0;
+            list-style: none;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 8px 15px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            background-color: var(--primary-hover);
+        }
+
+        .action-buttons {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 10px 0;
+            position: sticky;
+            bottom: 0;
+            z-index: 90;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .btn-success {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: var(--success-hover);
+        }
+
+        .btn-danger {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: var(--danger-hover);
+        }
+
+        .content-section {
+            display: none;
+            padding: 20px 0;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            font-size: 1.6rem;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(98, 98, 195, 0.2);
+        }
+
+        .form-control[readonly] {
+            background-color: var(--disabled-bg);
+            cursor: not-allowed;
+        }
+
+        .help-text {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .preview-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .preview-image {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .preview-image:hover {
+            transform: scale(1.05);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoom 0.6s;
+        }
+
+        @keyframes zoom {
+            from {transform: scale(0);}
+            to {transform: scale(1);}
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .success-toast {
+            position: fixed;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--success-color);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+            
+            nav ul li a {
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+            
+            .form-container {
+                padding: 15px;
+            }
+            
+            .section-title {
+                font-size: 1.4rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Система отчетности "OTCHET-POKAZATELI"</h1>
+    </header>
+
+    <nav id="mainNav">
+        <ul>
+            <li><a href="#" data-section="section1" class="nav-link active">1.1</a></li>
+            <li><a href="#" data-section="section2" class="nav-link">1.2</a></li>
+            <li><a href="#" data-section="section3" class="nav-link">1.3</a></li>
+            <li><a href="#" data-section="section4" class="nav-link">1.4</a></li>
+            <li><a href="#" data-section="section5" class="nav-link">1.5</a></li>
+            <li><a href="#" data-section="section6" class="nav-link">1.6</a></li>
+            <li><a href="#" data-section="section7" class="nav-link">1.7</a></li>
+            <li><a href="#" data-section="section8" class="nav-link">1.8</a></li>
+            <li><a href="#" data-section="section9" class="nav-link">1.9</a></li>
+            <li><a href="#" data-section="section10" class="nav-link">1.10</a></li>
+            <li><a href="#" data-section="section11" class="nav-link">2.1</a></li>
+            <li><a href="#" data-section="section12" class="nav-link">2.2</a></li>
+            <li><a href="#" data-section="section13" class="nav-link">2.3</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Раздел 1.1 -->
+        <section id="section1" class="content-section active">
+            <h2 class="section-title">1.1 Повышение уровня профессиональной подготовленности и самообразования</h2>
+            <div class="form-container">
+                <div class="form-group">
+                    <label for="section1-input1">Графа 1.1</label>
+                    <input type="text" id="section1-input1" class="form-control" readonly value="1.1">
+                </div>
+                <div class="form-group">
+                    <label for="section1-input2">Дата мероприятия</label>
+                    <input type="date" id="section1-input2" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="section1-input3">Название мероприятия</label>
+                    <input type="text" id="section1-input3" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="section1-input4">Место проведения</label>
+                    <input type="text" id="section1-input4" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="section1-input5">Ссылка</label>
+                    <input type="url" id="section1-input5" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="section1-input6">Участники</label>
+                    <input type="text" id="section1-input6" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="section1-input7">Призеры</label>
+                    <input type="text" id="section1-input7" class="form-control">
+                </div>
+            </div>
+            
+            <p class="help-text">Нажмите на изображение, чтобы увеличить</p>
+            
+            <div class="preview-container">
+                <img src="1.1 - 1.2.jpg" alt="Пример отчета 1.1" class="preview-image" onclick="openModal(this.src)">
+            </div>
+        </section>
+
+        <!-- Раздел 1.2 -->
+        <section id="section2" class="content-section">
+            <h2 class="section-title">1.2 Участие в профессиональных конкурсах</h2>
+            <div class="form-container">
+                <div class="form-group">
+                    <label for="section2-input1">Графа 1.2</label>
+                    <input type="text" id="section2-input1" class="form-control" readonly value="1.2">
+                </div>
+                <div class="form-group">
+                    <label for="section2-input2">Дата конкурса</label>
+                    <input type="date" id="section2-input2" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="section2-input3">Название конкурса</label>
+                    <input type="text" id="section2-input3" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="section2-input4">Организатор</label>
+                    <input type="text" id="section2-input4" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="section2-input5">Ссылка на результаты</label>
+                    <input type="url" id="section2-input5" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="section2-input6">Результат участия</label>
+                    <input type="text" id="section2-input6" class="form-control">
+                </div>
+            </div>
+            
+            <p class="help-text">Нажмите на изображение, чтобы увеличить</p>
+            
+            <div class="preview-container">
+                <img src="/Users/Sabir/Library/Mobile Documents/com~apple~CloudDocs/Documents/GAZETA/TG_Parsing/HTML:CSS:JS/project0/1.1 - 1.2.jpg" alt="Пример отчета 1.2" class="preview-image" onclick="openModal(this.src)">
+            </div>
+        </section>
+
+        <!-- Остальные разделы аналогично -->
+        <!-- Раздел 1.3 -->
+        <section id="section3" class="content-section">
+            <h2 class="section-title">1.3 Публикации в профессиональных изданиях</h2>
+            <div class="form-container">
+                <div class="form-group">
+                    <label for="section3-input1">Графа 1.3</label>
+                    <input type="text" id="section3-input1" class="form-control" readonly value="1.3">
+                </div>
+                <div class="form-group">
+                    <label for="section3-input2">Дата публикации</label>
+                    <input type="date" id="section3-input2" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="section3-input3">Название публикации</label>
+                    <input type="text" id="section3-input3" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="section3-input4">Издание</label>
+                    <input type="text" id="section3-input4" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="section3-input5">Ссылка на публикацию</label>
+                    <input type="url" id="section3-input5" class="form-control">
+                </div>
+            </div>
+        </section>
+
+        <!-- Разделы с 1.4 по 2.3 будут аналогичными -->
+        <!-- Для примера покажу еще один раздел -->
+        
+        <!-- Раздел 1.4 -->
+        <section id="section4" class="content-section">
+            <h2 class="section-title">1.4 Проведение мастер-классов и открытых уроков</h2>
+            <div class="form-container">
+                <div class="form-group">
+                    <label for="section4-input1">Графа 1.4</label>
+                    <input type="text" id="section4-input1" class="form-control" readonly value="1.4">
+                </div>
+                <div class="form-group">
+                    <label for="section4-input2">Дата проведения</label>
+                    <input type="date" id="section4-input2" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="section4-input3">Тип мероприятия</label>
+                    <input type="text" id="section4-input3" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="section4-input4">Тема</label>
+                    <input type="text" id="section4-input4" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="section4-input5">Место проведения</label>
+                    <input type="text" id="section4-input5" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="section4-input6">Количество участников</label>
+                    <input type="number" id="section4-input6" class="form-control">
+                </div>
+            </div>
+        </section>
+
+        <!-- Здесь следуют разделы 1.5 - 2.3 с соответствующими полями -->
+        <!-- Добавьте оставшиеся разделы аналогичным образом -->
+    </div>
+
+    <div class="action-buttons">
+        <button class="btn btn-danger" id="clearButton">Очистить все поля</button>
+        <button class="btn btn-success" id="saveButton">Сохранить отчет</button>
+    </div>
+
+    <!-- Модальное окно для просмотра изображений -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <!-- Уведомление об успешном сохранении -->
+    <div id="successToast" class="success-toast">Отчет успешно сохранен!</div>
+
+    <script>
+        // Объект для хранения данных всех разделов
+        const formData = {
+            section1: {},
+            section2: {},
+            section3: {},
+            section4: {},
+            section5: {},
+            section6: {},
+            section7: {},
+            section8: {},
+            section9: {},
+            section10: {},
+            section11: {},
+            section12: {},
+            section13: {}
+        };
+
+        // Кэширование DOM элементов
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.content-section');
+        const clearButton = document.getElementById('clearButton');
+        const saveButton = document.getElementById('saveButton');
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const successToast = document.getElementById('successToast');
+
+        // Функция навигации по разделам
+        function navigateToSection(targetSectionId) {
+            // Сохраняем данные из текущего активного раздела
+            saveCurrentSectionData();
+            
+            // Обновляем активный класс в навигации
+            navLinks.forEach(link => {
+                if (link.dataset.section === targetSectionId) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+            
+            // Показываем выбранный раздел и скрываем остальные
+            sections.forEach(section => {
+                if (section.id === targetSectionId) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+            
+            // Загружаем данные для выбранного раздела
+            loadSectionData(targetSectionId);
+        }
+
+        // Сохранение данных текущего раздела
+        function saveCurrentSectionData() {
+            const activeSection = document.querySelector('.content-section.active');
+            if (!activeSection) return;
+            
+            const sectionId = activeSection.id;
+            const inputs = activeSection.querySelectorAll('input:not([readonly])');
+            
+            inputs.forEach(input => {
+                formData[sectionId][input.id] = input.value;
+            });
+        }
+
+        // Загрузка данных для выбранного раздела
+        function loadSectionData(sectionId) {
+            const sectionData = formData[sectionId];
+            if (!sectionData) return;
+            
+            const inputs = document.querySelectorAll(`#${sectionId} input:not([readonly])`);
+            
+            inputs.forEach(input => {
+                if (sectionData[input.id]) {
+                    input.value = sectionData[input.id];
+                }
+            });
+        }
+
+        // Очистка всех полей
+        function clearAllFields() {
+            if (!confirm('Вы уверены, что хотите очистить все введенные данные?')) {
+                return;
+            }
+            
+            // Очищаем объект данных
+            for (const section in formData) {
+                formData[section] = {};
+            }
+            
+            // Очищаем все поля ввода
+            document.querySelectorAll('input:not([readonly])').forEach(input => {
+                input.value = '';
+            });
+            
+            showToast('Все поля очищены!');
+        }
+
+        // Исправленная функция сохранения отчета в CSV
+    function saveReport() {
+        // Сначала сохраняем данные текущего раздела
+        saveCurrentSectionData();
+        
+        // Подготовка CSV данных
+        let csvContent = "data:text/csv;charset=utf-8,";
+        
+        // Добавляем заголовок с датой
+        const currentDate = new Date();
+        const formattedDate = formatDate(currentDate, true);
+        csvContent += `"Дата формирования отчета","${formattedDate}"\r\n\r\n`;
+        
+        // Обработка каждого раздела
+        for (let i = 1; i <= 13; i++) {
+            const sectionId = `section${i}`;
+            const sectionElement = document.getElementById(sectionId);
+            if (!sectionElement) continue; // Пропускаем, если раздел не найден
+            
+            const sectionTitle = sectionElement.querySelector(".section-title").textContent;
+            csvContent += `"${sectionTitle}"\r\n`;
+            
+            // Добавляем заголовки полей
+            const headerRow = [];
+            const labelElements = sectionElement.querySelectorAll(".form-group label");
+            labelElements.forEach(label => {
+                headerRow.push(`"${label.textContent}"`);
+            });
+            csvContent += headerRow.join(',') + "\r\n";
+            
+            // Добавляем значения полей
+            const valueRow = [];
+            const inputElements = sectionElement.querySelectorAll("input");
+            inputElements.forEach(input => {
+                // Экранируем двойные кавычки внутри значения
+                const escapedValue = input.value.replace(/"/g, '""');
+                valueRow.push(`"${escapedValue}"`);
+            });
+            csvContent += valueRow.join(',') + "\r\n\r\n";
+        }
+        
+        // Создаем и загружаем CSV файл
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", `Отчет_${formatDate(currentDate)}.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        showToast('Отчет успешно сохранен!');
+    }
+
+    // Вспомогательная функция для форматирования даты (та же самая)
+    function formatDate(date, withTime = false) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        
+        if (withTime) {
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            return `${year}-${month}-${day} ${hours}:${minutes}`;
+        }
+        
+        return `${year}-${month}-${day}`;
+    }
+
+        // Функция для загрузки CSV файла
+        function downloadCSV(csvContent, filename) {
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            
+            // Поддержка разных браузеров
+            if (navigator.msSaveBlob) { // IE 10+
+                navigator.msSaveBlob(blob, filename);
+            } else {
+                const url = URL.createObjectURL(blob);
+                link.href = url;
+                link.download = filename;
+                link.style.display = 'none';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                setTimeout(() => URL.revokeObjectURL(url), 100);
+            }
+        }
+
+        // Функция для показа всплывающего уведомления
+        function showToast(message) {
+            successToast.textContent = message;
+            successToast.style.display = 'block';
+            
+            setTimeout(() => {
+                successToast.style.display = 'none';
+            }, 3000);
+        }
+
+        // Функция для открытия модального окна с изображением
+        function openModal(imgSrc) {
+            modal.style.display = 'block';
+            modalImg.src = imgSrc;
+        }
+
+        // Функция для закрытия модального окна
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        // Инициализация обработчиков событий
+        document.addEventListener('DOMContentLoaded', () => {
+            // Обработчики для навигации
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    navigateToSection(link.dataset.section);
+                });
+            });
+            
+            // Обработчик для кнопки очистки
+            clearButton.addEventListener('click', clearAllFields);
+            
+            // Обработчик для кнопки сохранения
+            saveButton.addEventListener('click', saveReport);
+            
+            // Закрытие модального окна по клику вне изображения
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // Загрузка данных первого раздела при инициализации
+            loadSectionData('section1');
+        });
+    </script>
+</body>
+</html>
